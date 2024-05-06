@@ -88,8 +88,11 @@ public:
 int main() {
   srand(time(NULL));
 
+  // Disable exit key (escape)
+  SetExitKey(0);
+
   InitWindow(windowSize, windowSize, "First raylib window");
-  SetTargetFPS(60);
+  SetTargetFPS(120);
 
   bool running = false, gameOver = false;
   Snake snake;
@@ -140,6 +143,7 @@ int main() {
       moveQueue.push({0, -1});
 
     currentTime = GetTime();
+    // Move in 10FPS
     if (currentTime - updateTime > 1.0 / 10) {
       updateTime = currentTime;
 
